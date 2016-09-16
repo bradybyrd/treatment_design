@@ -1,7 +1,14 @@
 ## BJB EDI Design
 TreatmentDesign
+Customer
+	id
+	name
+User
+	blah blah
+
 
 Basin
+	site_id
 	Depth
 	DiffuserDepth
 	Width
@@ -11,42 +18,44 @@ Basin
 	SideSlopeRatio
 	Volume (calc)
 Influent
+	site_id
 	Design Flow	
 	BODConcentration                    a) concentration	
 	BODInflowRate                                             b) weight/d	
 	BODRemovalPercent				Primary Treatment (% BOD Removal)	
-	% BOD Remaining (100% - Primary Treatment)	
+	% BOD Remaining (calc- 100% - Primary Treatment)	
 	Design BOD removal	
-	Carbonaceous BOD(5) to the aeration basin 	
-	          (BOD Raw Waste) x (% BOD Remaining)	
+	Carbonaceous BOD(5) to the aeration basin 	(calc- BOD Raw Waste) x (% BOD Remaining)	          	
 	Mixed Liquor Suspended Solids, MLSS	
-	
 	Aeration Detention Time, HRT	
 	f/m ratio	
 	Specific Loading Rate, lb BOD5 / kcf / day	
 	Oxygen per unit of carbonaceous BOD removed	
 	Oxygen requirements for Carbonaceous BOD	
-	          at field conditions (Oxygen required for design BOD removal)	
-	Ammonia to aeration basin       a) concentration	
-	                                              b)  weight/d	
-	Oxygen requirements for Ammonia	
-	         (Ammonia to aeration basin) x (4.57#O2/#NH3-N)	
-	Total oxygen requirements, AOR	
-	          (Oxygen requirement for BOD and Ammonia)
+	Ammonia to aeration basin concentration	
+	Ammonia to aeration basin weight/d                    
+	Oxygen requirements for Ammonia		(calc- Ammonia to aeration basin) x (4.57#O2/#NH3-N)
+	Total oxygen requirements, AOR		(calc- Oxygen requirement for BOD and Ammonia)	          
 ConstantSet
-	constant_set_id
+	id
 	name
 	description
 	creator_id
+ConstantValue
+	constant_set_id
+	constant_id
+	assigned_value
 Constant
 	id
 	component_id
 	name
-	assigned_value
+	default_value
 	description
 Site
 	id
 	name
+	customer_id
+	constant_set_id
 	elevation
 	description
 	gps
@@ -59,18 +68,17 @@ Site
 	Winter surface saturation, Csmt
 	Summer surface saturation, Csmt
 	Effective depth correction factor
-	Standard condition aerated O2 saturation in the tank,
-	         C*20=9.09*(29.92+0.8828*Depth Correction*Depth)/29.92
-	Theta value=
-	AOR/SOR=ALPHA[BETA(C*20)(Csmt/9.09)(Psite/Psc)-
-	          DO](THETA)^(Temp-20)/(C*20)
-	            Winter    AOR/SOR
-	             Summer AOR/SOR
+	Standard condition aerated O2 saturation in the tank (calc- C*20=9.09*(29.92+0.8828*Depth Correction*Depth)/29.92)
+	Theta value (calc- AOR/SOR=ALPHA[BETA(C*20)(Csmt/9.09)(Psite/Psc)- DO](THETA)^(Temp-20)/(C*20), Winter    AOR/SOR, Summer AOR/SOR)
 	Standard Oxygen Transfer Rate (per day)
 	Aeration Time
 	Standard Oxygen Transfer Rate (per hour)
 	SOR/diffuser
 
+SiteComponents
+	site_id
+	component_id
+	
 Component
 	id
 	name

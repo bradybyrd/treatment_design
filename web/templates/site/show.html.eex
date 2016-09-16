@@ -1,0 +1,53 @@
+<h2>Show site</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @site.name %>
+  </li>
+
+  <li>
+    <strong>Address1:</strong>
+    <%= @site.address1 %>
+  </li>
+
+  <li>
+    <strong>Address2:</strong>
+    <%= @site.address2 %>
+  </li>
+
+  <li>
+    <strong>City:</strong>
+    <%= @site.city %>
+  </li>
+
+  <li>
+    <strong>State:</strong>
+    <%= @site.state %>
+  </li>
+
+  <li>
+    <strong>Post code:</strong>
+    <%= @site.post_code %>
+  </li>
+
+  <li>
+    <strong>Elevation:</strong>
+    <%= @site.elevation %>
+  </li>
+
+  <li>
+    <strong>Gps:</strong>
+    <%= @site.gps %>
+  </li>
+
+  <li>
+    <strong>Phone:</strong>
+    <%= @site.phone %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: site_path(@conn, :edit, @site) %>
+<%= link "Back", to: site_path(@conn, :index) %>
